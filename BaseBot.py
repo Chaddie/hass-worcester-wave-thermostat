@@ -1,13 +1,13 @@
 import base64
 from Crypto.Cipher import AES
 
-import sleekxmpp
+import slixmpp
 
 import ssl
 
 from utils import get_md5
 
-class BaseWaveMessageBot(sleekxmpp.ClientXMPP):
+class BaseWaveMessageBot(slixmpp.ClientXMPP):
 
     secret = b'X\xf1\x8dp\xf6g\xc9\xc7\x9e\xf7\xdeC[\xf0\xf9\xb1U;\xbbna\x81b\x12\xab\x80\xe5\xb0\xd3Q\xfb\xb1'
 
@@ -17,7 +17,7 @@ class BaseWaveMessageBot(sleekxmpp.ClientXMPP):
         jid = "rrccontact_%s@wa2-mz36-qrmzh6.bosch.de" % serial_number
         connection_password = "Ct7ZR03b_%s" % access_code
 
-        sleekxmpp.ClientXMPP.__init__(self, jid, connection_password)
+        slixmpp.ClientXMPP.__init__(self, jid, connection_password)
 
         self.recipient = "rrcgateway_%s@wa2-mz36-qrmzh6.bosch.de" % serial_number
         self.msg = message
@@ -34,13 +34,13 @@ class BaseWaveMessageBot(sleekxmpp.ClientXMPP):
 
     def connect(self):
         self.connected = True
-        return sleekxmpp.ClientXMPP.connect(self, ('wa2-mz36-qrmzh6.bosch.de', 5222),
+        return slixmpp.ClientXMPP.connect(self, ('wa2-mz36-qrmzh6.bosch.de', 5222),
                                             use_ssl=False,
                                             use_tls=False)
 
     def disconnect(self):
         self.connected = False
-        return sleekxmpp.ClientXMPP.disconnect(self)
+        return slixmpp.ClientXMPP.disconnect(self)
 
     def run(self):
         self.connect()
