@@ -1,0 +1,8 @@
+{
+  "domain": "worcester_wave",
+  "name": "Worcester Wave Boiler Thermostat",
+  "documentation": "https://github.com/comm/hass-worcester-wave-thermostat",
+  "dependencies": [],
+  "codeowners": [@comm],
+  "requirements": []
+}
